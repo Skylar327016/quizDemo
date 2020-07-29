@@ -8,21 +8,24 @@
 import UIKit
 
 class ResultViewController: UIViewController {
-    
+    //顯示學院結果
     @IBOutlet weak var houseName: UILabel!
+    //顯示學院圖片
     @IBOutlet weak var housePicture: UIImageView!
+    //儲存上個畫面傳來的值
     var selectedOptions = [Option]()
+    //儲存本次學院結果，隨便設定一個初始值
     var yourHouse:House = .Gryffindor
     override func viewDidLoad() {
         super.viewDidLoad()
-        setViews()
+        yourHouse = getHouseResult()
+        setViews(with: yourHouse)
     }
     
     @IBAction func testAgain(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
-    func setViews(){
-        yourHouse = getHouseResult()
+    func setViews(with yourHouse:House){
         switch yourHouse{
         case .Gryffindor:
             houseName.text = "葛萊分多"

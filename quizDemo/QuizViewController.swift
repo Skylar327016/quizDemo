@@ -35,10 +35,13 @@ class QuizViewController: UIViewController {
     }
 
     @IBAction func answer(_ sender: UIButton) {
+        //用使用者選取的選項tag值得到Quiz的Option陣列的option，儲存到selectedOptions
         selectedOptions.append(quizzes[currentQuiz].options[sender.tag])
+        //當已經回答到最後一道題目(索引值 = 陣列長度 -1)，就跳轉畫面
         if currentQuiz == quizzes.count - 1{
             performSegue(withIdentifier: "toTheEnd", sender: nil)
         }else{
+            //還沒回答完，就把目前題數+1，再顯示新的題目的內容
             currentQuiz += 1
             setQuiz()
         }
@@ -47,7 +50,9 @@ class QuizViewController: UIViewController {
     
     @IBSegueAction func showResult(_ coder: NSCoder) -> ResultViewController? {
         let controller = ResultViewController(coder: coder)
+        //傳值
         controller?.selectedOptions = selectedOptions
+        //重置本次回答紀錄
         answerTimes = 0
         selectedOptions.removeAll()
         currentQuiz = 0
