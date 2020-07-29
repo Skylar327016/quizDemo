@@ -34,7 +34,16 @@ class QuizViewController: UIViewController {
         setQuiz()
     }
 
-    
+    @IBAction func answer(_ sender: UIButton) {
+        selectedOptions.append(quizzes[currentQuiz].options[sender.tag])
+        if currentQuiz == quizzes.count - 1{
+            performSegue(withIdentifier: "toTheEnd", sender: nil)
+        }else{
+            currentQuiz += 1
+            setQuiz()
+        }
+        
+    }
     
     @IBSegueAction func showResult(_ coder: NSCoder) -> ResultViewController? {
         let controller = ResultViewController(coder: coder)
