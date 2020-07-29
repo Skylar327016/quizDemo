@@ -37,7 +37,8 @@
                                             <constraint firstAttribute="height" constant="128" id="j2z-lx-JIz"/>
                                         </constraints>
                                         <string key="text">啊哈！又有一年級新生啦？
-現在，在我把你的腦袋看破、分類進其中一個學院以前，
+現在，在我把你的腦袋看破、
+分類進其中一個學院以前，
 讓我問你幾個問題......</string>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -188,7 +189,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qxw-8S-K1Q" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2964" y="5"/>
+            <point key="canvasLocation" x="2364" y="5"/>
         </scene>
         <!--Quiz View Controller-->
         <scene sceneID="pi8-EM-UcP">
@@ -230,6 +231,11 @@
                                             <constraint firstAttribute="height" constant="180" id="xbj-Ia-n15"/>
                                         </constraints>
                                         <blurEffect style="regular"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="40"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </visualEffectView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="gVh-m5-Qon">
                                         <rect key="frame" x="57" y="340" width="300" height="370"/>
@@ -274,6 +280,11 @@
                                                     <constraint firstAttribute="height" constant="70" id="e3j-yF-i1n"/>
                                                 </constraints>
                                                 <blurEffect style="regular"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </visualEffectView>
                                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9mY-UM-Ef4">
                                                 <rect key="frame" x="0.0" y="100" width="300" height="70"/>
@@ -315,6 +326,11 @@
                                                     <constraint firstAttribute="width" constant="300" id="wok-fu-mfs"/>
                                                 </constraints>
                                                 <blurEffect style="regular"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </visualEffectView>
                                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ABw-HO-FXg">
                                                 <rect key="frame" x="0.0" y="200" width="300" height="70"/>
@@ -356,6 +372,11 @@
                                                     <constraint firstAttribute="width" constant="300" id="LW3-JE-sQc"/>
                                                 </constraints>
                                                 <blurEffect style="regular"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </visualEffectView>
                                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H0E-Bb-C5H">
                                                 <rect key="frame" x="0.0" y="300" width="300" height="70"/>
@@ -397,6 +418,11 @@
                                                     <constraint firstAttribute="width" constant="300" id="MRM-Rp-wTn"/>
                                                 </constraints>
                                                 <blurEffect style="regular"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </visualEffectView>
                                         </subviews>
                                     </stackView>
@@ -435,7 +461,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Tr-nG-LTV" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1902.8985507246377" y="4.6875"/>
+            <point key="canvasLocation" x="1620" y="-7"/>
         </scene>
     </scenes>
     <resources>

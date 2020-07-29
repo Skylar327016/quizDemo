@@ -8,55 +8,45 @@
 import UIKit
 
 class QuizViewController: UIViewController {
-
+    //顯示問題的內容
     @IBOutlet weak var question: UITextView!
     @IBOutlet weak var option1: UITextView!
     @IBOutlet weak var option2: UITextView!
     @IBOutlet weak var option3: UITextView!
     @IBOutlet weak var option4: UITextView!
-
+    //全部問題的Quiz陣列
     var allQuizzes = [Quiz]()
+    //儲存亂數抽取題庫後的測驗題目
     var quizzes = [Quiz]()
+    //使用者回答題目次數
     var answerTimes = 0
+    //儲存每次使用者選擇的選項，也是要傳到下個畫面做統計的資料
     var selectedOptions = [Option]()
+    //目前顯示在畫面上的問題(在quizzes的索引值)
     var currentQuiz = 0
     override func viewDidLoad() {
         super.viewDidLoad()
+        //手動生成每個題目，然後一一加到allQuizzes陣列
         loadQuizzes()
+        //亂數抽取7題當測驗題目
+        quizzes = getRandomQuizzes(from: allQuizzes)
+        //依據currentQuiz的值取出quizzes的問題，然後將內容設定給要顯示的textView
         setQuiz()
     }
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(true)
-//        answerTimes = 0
-//        selectedOptions.removeAll()
-//        currentQuiz = 0
-//        quizzes = getRandomQuizzes(from: allQuizzes)
-//        setQuiz()
-//    }
-    @IBAction func answer(_ sender: UIButton) {
-        selectedOptions.append(quizzes[currentQuiz].options[sender.tag])
-        if currentQuiz == quizzes.count - 1{
-            for option in selectedOptions{
-                print("\(option.content)")
-            }
-            performSegue(withIdentifier: "toTheEnd", sender: nil)
-        }else{
-            currentQuiz += 1
-            setQuiz()
-        }
-        
-    }
+
+    
     
     @IBSegueAction func showResult(_ coder: NSCoder) -> ResultViewController? {
         let controller = ResultViewController(coder: coder)
         controller?.selectedOptions = selectedOptions
+        answerTimes = 0
+        selectedOptions.removeAll()
+        currentQuiz = 0
+        quizzes = getRandomQuizzes(from: allQuizzes)
+        setQuiz()
         return controller
-        
     }
-    
-    
-    
-    
+ 
     func setQuiz(){
         question.text = quizzes[currentQuiz].question
         option1.text = quizzes[currentQuiz].options[0].content
@@ -171,22 +161,34 @@ class QuizViewController: UIViewController {
         allQuizzes.append(quiz13)
         allQuizzes.append(quiz14)
         allQuizzes.append(quiz15)
-        quizzes = getRandomQuizzes(from: allQuizzes)
-            
         }
     func getRandomQuizzes(from allQuizzes:[Quiz]) -> [Quiz]{
+        //儲存要回傳的亂數題庫
         var randomQuizzes = [Quiz]()
-        var numberOfQuizzes = 0
-        while numberOfQuizzes < 7{
-            let randomQuiz = allQuizzes.randomElement()
-            for quiz in randomQuizzes{
-                if randomQuiz == quiz{
-                    break
+        //用來判斷亂數抽取的題庫有沒有重複
+        var isRepeated = false
+        //如果不到7題就會一直執行迴圈
+        while randomQuizzes.count < 7{
+            if let randomQuiz = allQuizzes.randomElement(){
+                //如果陣列長度0，跑for each會變成無窮迴圈，所以要先加入一個問題
+                if randomQuizzes.count == 0{
+                    randomQuizzes.append(randomQuiz)
                 }else{
-                    randomQuizzes.append(quiz)
-                    numberOfQuizzes += 1
+                    //將目前亂數的題庫題目一一跟本次抽出的題目比對是不是同一題，如果是就改isRepeated的值
+                    for quiz in randomQuizzes{
+                        if randomQuiz == quiz{
+                            isRepeated = true
+                        }
+                    }
+                    //如果都沒重複就加到題庫
+                    if !isRepeated{
+                        randomQuizzes.append(randomQuiz)
+                    }
+                    //重置確認有無重複的Bool
+                    isRepeated = false
                 }
             }
+
         }
         return randomQuizzes
     }
