@@ -42,13 +42,18 @@ class ResultViewController: UIViewController {
         }
     }
     func getHouseResult() -> House{
+        //儲存個學院被選的次數陣列
         var counts = [Int]()
+        //儲存備選的最大次數
         var maxCount = 0
+        //儲存個學院的次數
         var countForGryffindor = 0
         var countForHufflepuff = 0
         var countForRavenclaw = 0
         var countForSlytherin = 0
+        //由於有可能會有學院同票的情況，將一樣是最大次數的學院儲存到這個陣列
         var finalHouses = [House]()
+        //跑for each將傳來的option陣列值，一一取出後，比對belongTo的值，將相對應的學院儲存次數+1
         for option in selectedOptions{
             switch option.belongTo{
             case .Gryffindor:
@@ -61,15 +66,18 @@ class ResultViewController: UIViewController {
                 countForSlytherin += 1
             }
         }
+        //統計結束後，儲存到一個次數陣列
         counts.append(countForGryffindor)
         counts.append(countForHufflepuff)
         counts.append(countForRavenclaw)
         counts.append(countForSlytherin)
+        //跑for each，如果次數比之前的maxCount大，就更新maxCount
         for count in counts{
             if count > maxCount{
                 maxCount = count
             }
         }
+        //得到maxCount後，比對個學院次數，如果跟maxCount一樣就加到finalHouses
         if countForGryffindor == maxCount{
             finalHouses.append(.Gryffindor)
         }
@@ -82,7 +90,7 @@ class ResultViewController: UIViewController {
         if countForRavenclaw == maxCount{
             finalHouses.append(.Ravenclaw)
         }
-        
+        //最後從finalHouses中隨機抽取一個學院，不負責任的給使用者
         return finalHouses.randomElement()!
     }
     /*
